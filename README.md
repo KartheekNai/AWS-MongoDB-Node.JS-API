@@ -131,6 +131,34 @@ sudo ufw enable
 sudo ufw status  
 ```
 
+## 10. Connect Power BI to Node.js API
+```bash
+# Ensure API is running
+pm2 start node-api  
+
+# Check the API URL
+curl -i http://your-server-ip:3000/api/data  
+
+# Install CORS for Power BI connectivity
+npm install cors  
+
+# Edit server.js to enable CORS
+nano server.js  
+
+# Add the following lines at the top
+const cors = require('cors');
+app.use(cors());  
+
+# Restart the API
+pm2 restart node-api  
+
+# Test Power BI connection
+# Open Power BI Desktop > Get Data > Web > Enter API URL
+http://your-server-ip:3000/api/data  
+
+# Publish Power BI report and refresh data
+``` 
+
 
 ## Final Checklist
 ✅ **Node.js Installed** (`node -v`)
